@@ -1,63 +1,63 @@
-# JavaScript animations
+# JavaScript анімації
 
-JavaScript animations can handle things that CSS can't.
+JavaScript анімації можуть справитися з тим, з чим не зможе чистий CSS.
 
-For instance, moving along a complex path, with a timing function different from Bezier curves, or an animation on a canvas.
+Наприклад, рух за складною траекторією з часовою функцією, відмінною від кривої Безьє, чи canvas-анімація.
 
-## Using setInterval
+## Використання setInterval
 
-An animation can be implemented as a sequence of frames -- usually small changes to HTML/CSS properties.
+Анімація може бути реалізована як послідовність кадрів -- зазвичай незначних змін HTML/CSS властивостей.
 
-For instance, changing `style.left` from `0px` to `100px` moves the element. And if we increase it in `setInterval`, changing by `2px` with a tiny delay, like 50 times per second, then it looks smooth. That's the same principle as in the cinema: 24 frames per second is enough to make it look smooth.
+Скажімо, якщо поміняти `style.left` з `0px` на `100px`, то елемент порухається. А якщо ми збільшимо цю властивість з невеликою затримкою у `setInterval` щораз на `2px`, як-от 50 разів за секунду, тоді він буде рухатися плавно. За таким же принципом працює кінотеатр: 24 кадри за секунду достатньо, щоб картинка виглядала плавною.
 
-The pseudo-code can look like this:
+Псевдо-код виглядатиме наступним чином:
 
 ```js
 let timer = setInterval(function() {
   if (animation complete) clearInterval(timer);
   else increase style.left by 2px
-}, 20); // change by 2px every 20ms, about 50 frames per second
+}, 20); // змінювати на 2px кожні 20мс, приблизно 50 кадрів за секунду
 ```
 
-More complete example of the animation:
+Повніший приклад анімації:
 
 ```js
-let start = Date.now(); // remember start time
+let start = Date.now(); // запам'ятати час початку
 
 let timer = setInterval(function() {
-  // how much time passed from the start?
+  // скільки часу пройшло з моменту початку?
   let timePassed = Date.now() - start;
 
   if (timePassed >= 2000) {
-    clearInterval(timer); // finish the animation after 2 seconds
+    clearInterval(timer); // завершити анімацію після 2 секунд
     return;
   }
 
-  // draw the animation at the moment timePassed
+  // відмалювати анімацію у момент timePassed
   draw(timePassed);
 
 }, 20);
 
-// as timePassed goes from 0 to 2000
-// left gets values from 0px to 400px
+// по мірі того, як timePassed міняється від 0 до 2000
+// Лівий край отримує значення від 0px до 400px
 function draw(timePassed) {
   train.style.left = timePassed / 5 + 'px';
 }
 ```
 
-Click for the demo:
+Клікніть, щоб побачити демо:
 
 [codetabs height=200 src="move"]
 
-## Using requestAnimationFrame
+## Використання requestAnimationFrame
 
-Let's imagine we have several animations running simultaneously.
+Давайте уявимо, що у нас є декілька анімацій, які запущені одночасно.
 
-If we run them separately, then even though each one has `setInterval(..., 20)`, then the browser would have to repaint much more often than every `20ms`.
+Якщо ми їх запустимо по окремості, то навіть якщо кожна з них має `setInterval(..., 20)`, браузер муситиме їх відмальовувати набагато частіше, ніж кожні `20ms`.
 
-That's because they have different starting time, so "every 20ms" differs between different animations. The intervals are not aligned. So we'll have several independent runs within `20ms`.
+Це стається тому, що у них різний початковий час, тому "кожні 20мс" буде відрізнятися для різниих анімацій. Інтервали не вирівнюються між собою. Отже ми отримаємо декілька запущених анімацій у межах `20ms`.
 
-In other words, this:
+Іншими словами, даний код:
 
 ```js
 setInterval(function() {
@@ -67,11 +67,11 @@ setInterval(function() {
 }, 20)
 ```
 
-...Is lighter than three independent calls:
+...Є легшою версією, ніж три незалежні виклики:
 
 ```js
-setInterval(animate1, 20); // independent animations
-setInterval(animate2, 20); // in different places of the script
+setInterval(animate1, 20); // незалежні один від одного анімації
+setInterval(animate2, 20); // у різних місцях скрипта
 setInterval(animate3, 20);
 ```
 

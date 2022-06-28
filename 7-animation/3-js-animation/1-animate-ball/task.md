@@ -2,8 +2,8 @@ importance: 5
 
 ---
 
-# Animate the bouncing ball
+# Анімуйте стрибання м’яча
 
-Make a bouncing ball. Click to see how it should look:
+Зробіть м’яч, який стрибає. Клікніть, щоб побачити як це має виглядати:
 
 [iframe height=250 src="solution"]

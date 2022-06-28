@@ -1,10 +1,10 @@
-In the task <info:task/animate-ball> we had only one property to animate. Now we need one more: `elem.style.left`.
+У завданні <info:task/animate-ball> було анімовано тільки одну властивість. Тепер потрібно це зробити для ще однієї: `elem.style.left`.
 
-The horizontal coordinate changes by another law: it does not "bounce", but gradually increases shifting the ball to the right.
+Горизонтальні координати змінюються згідно з іншим законом: вони не "стрибають", а поступово збільшуються, посуваючи м’яч у праву сторону.
 
-We can write one more `animate` for it.
+Ми можемо написати ще одну `animate` для цього.
 
-As the time function we could use `linear`, but something like `makeEaseOut(quad)` looks much better.
+Цього разу ми можемо використати часову функцію `linear`, але щось на кшталт `makeEaseOut(quad)` буде виглядати набагато краще.
 
 The code:
 
@@ -12,7 +12,7 @@ The code:
 let height = field.clientHeight - ball.clientHeight;
 let width = 100;
 
-// animate top (bouncing)
+// анімація верху (стрибання)
 animate({
   duration: 2000,
   timing: makeEaseOut(bounce),
@@ -21,7 +21,7 @@ animate({
   }
 });
 
-// animate left (moving to the right)
+// анімація лівого краю (рух у праву сторону)
 animate({
   duration: 2000,
   timing: makeEaseOut(quad),

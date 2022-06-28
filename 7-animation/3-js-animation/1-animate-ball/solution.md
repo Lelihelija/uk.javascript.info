@@ -1,10 +1,10 @@
-To bounce we can use CSS property `top` and `position:absolute` for the ball inside the field with `position:relative`.
+Для реалізації стрибання ми можемо викристати CSS властивість `top` та `position:absolute` для м’яча, який знаходиться всередині поля з `position:relative`.
 
-The bottom coordinate of the field is `field.clientHeight`. The CSS `top` property refers to the upper edge of the ball. So it should go from `0` till `field.clientHeight - ball.clientHeight`, that's the final lowest position of the upper edge of the ball.
+Нижні координати поля є `field.clientHeight`. CSS властивість `top` вказує на верхню границю м’яча. Отже її слід міняти від `0` до `field.clientHeight - ball.clientHeight`, це і буде кінцева найнижча позиція верхньої границі м’яча.
 
-To get the "bouncing" effect we can use the timing function `bounce` in `easeOut` mode.
+Щоб отримати ефект "стрибання", ми можемо використати часову функцію `bounce` у режимі `easeOut`.
 
-Here's the final code for the animation:
+Ось кінцевий варіант коду анімації:
 
 ```js
 let to = field.clientHeight - ball.clientHeight;

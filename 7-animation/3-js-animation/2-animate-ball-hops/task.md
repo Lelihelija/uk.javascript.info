@@ -2,12 +2,12 @@ importance: 5
 
 ---
 
-# Animate the ball bouncing to the right
+# Анімуйте стрибання м’яча у праву сторону
 
-Make the ball bounce to the right. Like this:
+Зробіть так, щоб м’яч стрибав у праву сторону. Таким чином:
 
 [iframe height=250 src="solution"]
 
-Write the animation code. The distance to the left is `100px`.
+Напишіть код анімації. Відстань вліво є `100px`.
 
-Take the solution of the previous task <info:task/animate-ball> as the source.
+Можете взяти за основу рішення з попереднього завдання <info:task/animate-ball>.
